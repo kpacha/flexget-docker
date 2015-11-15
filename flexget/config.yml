@@ -1,0 +1,30 @@
+web_server:
+  bind: 0.0.0.0
+  port: 5050
+api: yes
+webui: yes
+tasks:
+  download-rss:
+    rss: ##RSS_URL##
+    all_series: yes
+    transmission:
+      host: transmission
+      port: 9091
+    clean_transmission:
+      host: transmission
+      port: 9091
+      finished_for: 1 hours
+  sort-files:
+    find:
+      path: /transmission/
+      regexp: '.*\.(avi|mkv|mp4)$'
+      recursive: yes
+    accept_all: yes
+    seen: local
+    thetvdb_lookup: yes
+    all_series:
+      parse_only: yes
+    move:
+      to: /shows/{{ tvdb_series_name|default('Unknown') }}/Season {{ tvdb_season|default('Unknown') }}
+      filename: "{{ tvdb_series_name|default('Unknown Serie') }} - {{ series_id|default('XX') }} - {{ tvdb_ep_name|default('Unknown Episode Name') }}{{ location | pathext }}"
+    exec:  /usr/local/bin/periscope -l "$SUBTITLES_LANGUAGE" "/shows/{{ tvdb_series_name|default('Unknown') }}/Season {{ tvdb_season|default('Unknown') }}/{{ tvdb_series_name|default('Unknown Serie') }} - {{ series_id|default('XX') }} - {{ tvdb_ep_name|default('Unknown Episode Name') }}{{ location | pathext }}"
