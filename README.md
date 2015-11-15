@@ -16,9 +16,9 @@ Pull the images
 	$ docker pull kpacha/transimission:latest
 	$ docker pull kpacha/flexget:latest
 
-And create the folder to share between both containers. Let's call it `assets_transmission`!
+Create a folder for the flexget config
 
-	$ mkdir assets_transmission
+	$ mkdir assets_flexget
 
 ## From Github
 
@@ -57,6 +57,8 @@ In both cases, you need to define 3 env vars:
 + `SUBTITLE_LANGUAGE`: wanted language (ISO 639-1 two chars) for the subtitles (fr, en, ja, ...)
 + `RSS_URL`: the url of the rss feed
 + `PATH_TO_SHOWS`: path to the folder where all the files will be stored
+
+If you are running the flexget container directly, remember to set the `/root/.flexget` volume properly.
 
 # Stop it
 

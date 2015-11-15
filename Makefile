@@ -1,7 +1,7 @@
 all: init build
 
 init:
-	mkdir -p assets_transmission assets_flexget
+	mkdir assets_flexget
 
 build: build_flexget build_transmission
 

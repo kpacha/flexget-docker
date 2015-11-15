@@ -6,7 +6,7 @@ RUN pip install -I subliminal \
 RUN mkdir -p /root/flexget /root/.config /shows /transmission
 
 COPY start.sh /root/flexget/start.sh
-COPY config.yml /root/.config/flexget/config.yml
+COPY config_base.yml /root/flexget/config_base.yml
 
 ENV SUBTITLE_LANGUAGE="en"
 ENV RSS_URL="noop"
