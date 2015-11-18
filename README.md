@@ -13,7 +13,7 @@ flexget-docker
 
 Pull the images
 
-	$ docker pull kpacha/transimission:latest
+	$ docker pull kpacha/transmission:latest
 	$ docker pull kpacha/flexget:latest
 
 Create a folder for the flexget config
